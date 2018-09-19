@@ -1,0 +1,196 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="http://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+    crossorigin="anonymous">
+  <link rel="manifest" href="manifest.json">
+  <title>Share App</title>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <!-- main form-->
+    <!-- start form -->
+    <form enctype="multipart/form-data" class="form-horizontal" id="mainForm" method="post" action="http://127.0.0.1:5000/newrecipe">
+      <fieldset>
+        <!-- Form Name -->
+        <legend>New Recipe</legend>
+
+        <!-- name-->
+        <div class="form-group col-md-6">
+          <label class="control-label" for="Name">Name</label>
+          <div class="input-group">
+            <input id="Name" name="Name" type="text" placeholder="Name" class="form-control input-md" required>
+            <div class="input-group-append">
+              <span class="input-group-text">Name</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Recipe Pic-->
+        <div class='input-group'>
+          <div class='input-group-prepend'>
+            <div class='input-group-text' for='recipeImage'>Image</div>
+          </div>
+          <input type='file' id='recipeImage' name='recipeImage'/>
+        </div>
+        <br>
+        <!-- Number of Servings-->
+        <div class="form-group col-md-6">
+          <label class="control-label" for="Servings">Number of Servings</label>
+          <div class="input-group">
+            <input id="Servings" name="Servings" class="form-control" placeholder="Number of servings" type="text" required="">
+            <div class="input-group-append">
+              <span class="input-group-text">Servings</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- prep time-->
+        <div class="form-group col-md-6">
+          <label class="control-label" for="PrepTime">Prep Time</label>
+          <div class="input-group">
+            <input id="PrepTime" name="PrepTime" class="form-control" placeholder="Preparation time in Minutes" type="text" required="">
+            <div class="input-group-append">
+              <span class="input-group-text">Minutes</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Minutes-->
+        <div class="form-group col-md-6">
+          <label class="control-label" for="CookingTime">CookingTime</label>
+          <div class="input-group">
+            <input id="CookingTime" name="CookingTime" class="form-control" placeholder="Cooking time" type="text" required="">
+            <div class="input-group-append">
+              <span class="input-group-text">Minutes</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ingredients-->
+        <div class="form-group col-md-6">
+          <label class="control-label" for="Ingredient0">Ingredients</label>
+          <div id="IngredientGroup">
+            <div id="ing0">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">1</div>
+                </div>
+                <input id="Ingredient0" name="Ingredient0Name" type="text" placeholder="Ingredient + Quantity" class="form-control input-md"
+                  required="">
+                <button type="button" class="close" aria-label="Close" onclick="onRemoveIngredient('ing0')">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Button Add Ingredient -->
+        <div class="form-group col-md-6">
+          <label class="control-label" for="AddIngredient"></label>
+          <button type="button" id="AddIngredient" name="AddIngredient" class="btn btn-primary" onclick="onAddIngredientClk()">Add Ingredient</button>
+        </div>
+
+        <!-- Instructions -->
+        <div class="form-group col-md-12">
+          <label for="Instruction0">Instructions</label>
+          <div id="InstructionGroup">
+            <!-- text instruction-->
+            <div id='ins0'>
+              <div class='input-group'>
+                <div class='input-group-prepend'>
+                  <div class='input-group-text'>1</div>
+                </div>
+                <input id='Instruction0' name='Instruction0Name' class='form-control' type='text' required>
+                <button type='button' class='close' aria-label='Close' onclick="onRemoveInstruction('ins0')">
+                  <span aria-hidden='true'>&times;</span>
+                </button>
+              </div>
+              <!-- Choose Image file -->
+              <div class='input-group'>
+                <div class='input-group-prepend'>
+                  <div class='input-group-text' for='imgInp0'>Image</div>
+                </div>
+                <input type='file' id='imgInp0' name="imgImp0Name" onchange="onImageSelect('0')" />
+              </div>
+              <div id='img0'></div>
+              <!-- Video Youtube-->
+              <div class='col-md-6'>
+                <label class='control-label' for='vidins0'>Youtube link</label>
+                <input id='vidins0' name="vid-ins0" class='form-control' type='text'>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Button Add Instruction -->
+        <div class="form-group col-md-6 ">
+          <label class="control-label" for="AddInstruction"></label>
+          <button type="button" id="AddInstruction" name="AddInstruction" class="btn btn-primary" onclick="onAddInstructionClk()">Add Instruction</button>
+        </div>
+
+        <!-- Youtube link-->
+        <div class="form-group col-md-12">
+          <label class="control-label" for="youtubelink">Youtube link</label>
+          <input id="youtubelink" name="youtubelink" class="form-control" placeholder="You Tube Link" type="text">
+        </div>
+
+        <!-- tags-->
+        <div class='form-group col-md-4'>
+          <label class='control-label' for='tag0'>Tags</label>
+          <div id='tags'>
+            <div id='recipetag0'>
+              <div class='input-group'>
+                <div class='input-group-prepend'>
+                  <div class="input-group-text">#</div>
+                </div>
+                <input id='tag0' name='recipetag0name' type='text' placeholder='tag' class='form-control input-md'>
+                <button type='button' class='close' aria-label='Close' onclick="onRemoveTag('recipetag0')">
+                  <span aria-hidden='true'>&times;</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- add tag button-->
+        <div class="form-group col-md-6 ">
+          <label class="control-label" for="AddTag"></label>
+          <button type="button" id="AddTag" name="AddTagName" class="btn btn-primary" onclick="onAddTagClk()">Add Tag</button>
+        </div>
+
+        <!-- save reciepe button -->
+        <div class="form-group col-md-6">
+          <label class="control-label" for="Save"></label>
+          <button type="Submit" id="Save" name="Save" class="btn btn-success">Save</button>
+        </div>
+      </fieldset>
+      <input type="hidden" id="NumIngredients" name="NumIngredients" value="0">
+      <input type="hidden" id="NumInstructions" name="NumInstructions" value="0">
+      <input type="hidden" id="NumTags" name="NumTags" value="0">
+
+    </form>
+    <!-- End form -->
+  </div>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+    crossorigin="anonymous"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "share",
+  "version": "1.0.0",
+  "description": "test share app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kp122/Share.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kp122/Share/issues"
+  },
+  "homepage": "https://github.com/kp122/Share#readme",
+  "dependencies": {
+    "workbox-sw": "^3.1.0"
+  }
+}
