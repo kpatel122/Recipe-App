@@ -1,5 +1,5 @@
 # Recipe Progressive Web App
-Experimental project for working with progressive web apps. Allows the user to add and remove fields(e.g. Instructions, Tags, Video Steps)
+Android/IOS app. Allows the user to add and remove fields(e.g. Instructions, Tags, Video Steps)
 dynamically. Uses the bootstrap framework.
 
 
